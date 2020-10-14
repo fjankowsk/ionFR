@@ -23,9 +23,9 @@ day = int(date.split('-')[2])
 dayofyear = datetime.datetime.strptime(''+str(year)+' '+str(month)+' '+str(day)+'', '%Y %m %d').timetuple().tm_yday
 
 if dayofyear < 10:
-	dayofyear = '00'+str(dayofyear)
+        dayofyear = '00'+str(dayofyear)
 if dayofyear < 100 and dayofyear >= 10:
-	dayofyear = '0'+str(dayofyear)
+        dayofyear = '0'+str(dayofyear)
 
 # Outputing the name of the IONEX file you require
 print 'file needed:', 'CODG'+str(dayofyear)+'0.'+str(list(str(year))[2])+''+str(list(str(year))[3])+'I'

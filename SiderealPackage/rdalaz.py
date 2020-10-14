@@ -89,7 +89,7 @@ def alaz(tim):
     azmin = aa.__str__().split()[2].split("'")[0]
     azsec = aa.__str__().split()[3].split('"')[0]
     azdegrees = float(azdeg) + float(azmin)/60.0 + float(azsec)/3600.0
-    azradians = azdegrees*pi/180.0	
+    azradians = azdegrees*pi/180.0      
     # changing elevation or altitude of the source in degrees to radians
     aldeg = aa.__str__().split()[5].split('d')[0]
     almin = aa.__str__().split()[6].split("'")[0]
@@ -125,7 +125,7 @@ def checkArgs(ti):
     else:
         rawRADec, rawLat, rawLon, rawDT, fileIONEXTEC  =  argList
         rawDT = str(ti)
-	
+        
     #-- 2 --
     # [ if rawRADec is a valid set of equatorial coordinates ->
     #     raDec  :=  those coordinates as a sidereal.RADec instance
