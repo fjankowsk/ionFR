@@ -30,6 +30,9 @@
 
 import numpy
 
+from IONEX.helpers import interpolate_to_hour_resolution
+
+
 def calcTEC(coordLat, coordLon, filename):
         timeInt = 1.0 # hours
         totalmaps = 25
@@ -143,29 +146,14 @@ def calcTEC(coordLat, coordLon, filename):
         if NumberOfMaps == 13:
                 print('This is an old-style IONEX file with 2 hour resolution. Interpolate to 1 hour resolution.')
 
-                # producing interpolated TEC maps, and consequently a new array that will
-                # contain 25 TEC maps in total. The interpolation method used is the second
-                # one indicated in the IONEX manual
-
-                # creating a new array that will contain 25 maps in total
-                newa = numpy.zeros((totalmaps, int(pointsLat), int(pointsLon)))
-                inc = 0
-                for item in range(int(NumberOfMaps)):
-                        newa[inc,:,:] = a[item,:,:]
-                        inc = inc + 2
-
-                # performing the interpolation to create 12 addional maps
-                # from the 13 TEC maps available
-                while int(timeInt) <= (totalmaps - 2):
-                        for lat in range(int(pointsLat)):
-                                for lon in range(int(pointsLon)):
-                                        # interpolation type 2:
-                                        # newa[int(timeInt),lat,lon] = 0.5*newa[int(timeInt)-1,lat,lon] + 0.5*newa[int(timeInt)+1,lat,lon]
-                                        # interpolation type 3 ( 3 or 4 columns to the right and left of the odd maps have values of zero
-                                        # correct for this
-                                        if (lon >= 4) and (lon <= (pointsLon - 4)):
-                                                newa[int(timeInt),lat,lon] = 0.5 * newa[int(timeInt)-1,lat,lon+3] + 0.5 * newa[int(timeInt)+1,lat,lon-3]
-                        timeInt = timeInt + 2.0
+                newa = interpolate_to_hour_resolution(
+                        a,
+                        NumberOfMaps,
+                        pointsLat,
+                        pointsLon,
+                        totalmaps,
+                        timeInt
+                )
 
         elif NumberOfMaps == 25:
                 print('This is a new-style IONEX file with 1 hour resolution.')
