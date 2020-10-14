@@ -13,10 +13,10 @@ import ftplib
 import datetime
 import optparse as op
 
-p=op.OptionParser()
+p = op.OptionParser()
 p.add_option('--date','-d',default='NONE',type='string',help='Date (yyyy-mm-dd)')
 p.add_option('--type','-t',default='codg',type='string',help='Type of ionex file (codg,upcg,igsg) [codg default]')
-ops,args=p.parse_args()
+ops,args = p.parse_args()
 
 # Reading the date provided
 #date = raw_input('date of observation?(yyyy-mm-dd): ')
@@ -34,9 +34,9 @@ if dayofyear < 100 and dayofyear >= 10:
 
 # Outputing the name of the IONEX file you require
 file = str(ops.type)+str(dayofyear)+'0.'+str(list(str(year))[2])+str(list(str(year))[3])+'i.Z'
-print 'FILE:', file
+print('FILE:', file)
 directory = '/pub/gps/products/ionex/'+str(year)+'/'+str(dayofyear)+'/'
-print 'DIR:', directory
+print('DIR:', directory)
 
 def download(ftp,directory,file):
     ftp.cwd(directory)
@@ -50,4 +50,4 @@ ftp.login("anonymous", "anonymous")
 # Download appropriate file via ftp
 download(ftp, directory, file)
 
-print 'done'
+print('done')
