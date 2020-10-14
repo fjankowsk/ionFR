@@ -1,4 +1,6 @@
 # igrf binary
-IGRF/geomag70_linux/geomag70.exe
+/IGRF/geomag70_linux/
 # python cache directories
 __pycache__
+# macos preview files
+.DS_Store
