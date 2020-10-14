@@ -1,0 +1,4 @@
+# igrf binary
+IGRF/geomag70_linux/geomag70.exe
+# python cache directories
+__pycache__
