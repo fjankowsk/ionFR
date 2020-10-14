@@ -68,8 +68,7 @@ The python script ftpdownload.py allows you to download the correct IONEX file f
 Example: <code>ftpdownload.py 2011-10-20 -t codg</code>
 
 The IONEX files are downloaded as compressed .Z files. These can be unpacked using e.g. gunzip or other suitable command.
-Note that ionFR is compatible with IONEX files with 2-hr time resolution.
-CODE IONEX files (codg) have changed format and will not be immediately compatible with ionFR after ~2014.
+Note that ionFR is compatible with IONEX files with either 2-hr (until 2014) or 1-hr time resolution (after 2014).
 
 # ionFR Output
 A file called IonRM.txt will be created in the folder where you ran the test. This file contains
