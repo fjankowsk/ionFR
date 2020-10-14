@@ -51,7 +51,7 @@ def calcTEC(coordLat,coordLon,filename):
                 if LongList[i].split()[-1] == 'MAP':
                         if LongList[i].split()[-2] == 'RMS':
                                 add = 0
-                if add == 1:    
+                if add == 1:
                         NewLongList.append(LongList[i])
                 if LongList[i].split()[-1] == 'FILE':
                         if LongList[i].split()[-2] == 'IN':
@@ -68,7 +68,7 @@ def calcTEC(coordLat,coordLon,filename):
                         stepLon = float(LongList[i].split()[2])
                 if LongList[i].split()[0] == 'END':
                         if LongList[i].split()[2] == 'HEADER':
-                                add = 1 
+                                add = 1
 
         # Variables that indicate the number of points in Lat. and Lon.
         pointsLon = ((endLon - startLon)/stepLon) + 1
@@ -197,12 +197,3 @@ def calcTEC(coordLat,coordLon,filename):
         #=========================================================================
 
         return TECvalues
-
-
-
-                
-                
-
-
-
-

@@ -150,4 +150,3 @@ for h in range(24):
                 RMSIFR = 2.6*pow(10,-17)*Totfield*RMSTECpath
                 f = open(''+str(os.getcwd())+'/IonRM.txt', 'a')
                 f.write(''+str(hour)+' '+str(TECpath)+' '+str(Totfield)+' '+str(IFR)+' '+str(RMSIFR)+'\n')
-

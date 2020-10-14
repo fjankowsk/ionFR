@@ -19,12 +19,3 @@ def calcionheight(filename):
                         IonH = float(LongList[i].split()[0])
 
         return IonH
-
-
-
-                
-                
-
-
-
-
