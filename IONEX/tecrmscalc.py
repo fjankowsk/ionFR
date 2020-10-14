@@ -125,29 +125,41 @@ def calcRMSTEC(coordLat,coordLon,filename):
 
 
         #========================================================================================
-        # Producing interpolated RMS TEC maps, and consequently a new array that will 
-        # contain 25 RMS TEC maps in total. The interpolation method used is the second
-        # one indicated in the IONEX manual
+        # FJ 2020-10-14: new-style IONEX files contain 25 TEC maps (1 hour resolution),
+        # while older (until 2014 apparently) contain only 13 (2 hour resolution)
+        # we only need to interpolate in case of the old-style files
+        if NumberOfMaps == 13:
+                print('This is an old-style IONEX file with 2 hour resolution. Interpolate to 1 hour resolution.')
 
-        # Creating a new array that will contain 25 maps in total 
-        newa = numpy.zeros((totalmaps, int(pointsLat), int(pointsLon)))
-        inc = 0
-        for item in range(int(NumberOfMaps)):
-                newa[inc,:,:] = a[item,:,:]
-                inc = inc + 2
+                # Producing interpolated RMS TEC maps, and consequently a new array that will
+                # contain 25 RMS TEC maps in total. The interpolation method used is the second
+                # one indicated in the IONEX manual
 
-        # Performing the interpolation to create 12 addional maps 
-        # from the 13 RMS TEC maps available
-        while int(timeInt) <= (totalmaps-2):
-                for lat in range(int(pointsLat)):
-                        for lon in range(int(pointsLon)):
-                                # interpolation type 2:
-                                # newa[int(timeInt),lat,lon] = 0.5*newa[int(timeInt)-1,lat,lon] + 0.5*newa[int(timeInt)+1,lat,lon]  
-                                # interpolation type 3 ( 3 or 4 columns to the right and left of the odd maps have values of zero
-                                # Correct for this):
-                                if (lon >= 4) and (lon <= (pointsLon-4)):
-                                        newa[int(timeInt),lat,lon] = 0.5*newa[int(timeInt)-1,lat,lon+3] + 0.5*newa[int(timeInt)+1,lat,lon-3]
-                timeInt = timeInt + 2.0
+                # Creating a new array that will contain 25 maps in total
+                newa = numpy.zeros((totalmaps, int(pointsLat), int(pointsLon)))
+                inc = 0
+                for item in range(int(NumberOfMaps)):
+                        newa[inc,:,:] = a[item,:,:]
+                        inc = inc + 2
+
+                # Performing the interpolation to create 12 addional maps
+                # from the 13 RMS TEC maps available
+                while int(timeInt) <= (totalmaps - 2):
+                        for lat in range(int(pointsLat)):
+                                for lon in range(int(pointsLon)):
+                                        # interpolation type 2:
+                                        # newa[int(timeInt),lat,lon] = 0.5*newa[int(timeInt)-1,lat,lon] + 0.5*newa[int(timeInt)+1,lat,lon]
+                                        # interpolation type 3 ( 3 or 4 columns to the right and left of the odd maps have values of zero
+                                        # correct for this
+                                        if (lon >= 4) and (lon <= (pointsLon - 4)):
+                                                newa[int(timeInt),lat,lon] = 0.5 * newa[int(timeInt)-1,lat,lon+3] + 0.5 * newa[int(timeInt)+1,lat,lon-3]
+                        timeInt = timeInt + 2.0
+        elif NumberOfMaps == 25:
+                print('This is a new-style IONEX file with 1 hour resolution.')
+                newa = numpy.copy(a)
+
+        else:
+                raise RuntimeError('The number of TEC maps in the IONEX file is wrong: {0}'.format(NumberOfMaps))
         #========================================================================================
 
 
