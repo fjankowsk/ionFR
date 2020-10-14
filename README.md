@@ -18,22 +18,16 @@ You also need the gcc compiler
 
 The following are a few steps to get this code working:
 
-0) extract and open the ionFR/ folder
-
-1) *Note: This step should now be redundant.* Open the file 'ionFRM.py' and modify the variable 'path' in the first line to <your_path> (the location of the directory on your machine). Example: /home/carlos/Documents/ 
+1) extract and open the ionFR/ folder
 
 2) compile and create an executable of the software that has version 13 of the IGRF (IGRF13.COF). Go to <your_path>/ionFR/IGRF/geomag70_linux/
    and type the following:
-   
    <code>gcc -lm geomag70.c -o geomag70.exe</code>
 
 3) add to your PATH variable in your .bashrc or profile file the following:
 <code> export PATH=$PATH:<your_path>/ionFR </code>
 
-4) make the ionFRM.py script located in <your_path>/ionFR executable:
-   <code>chmod +x ionFRM.py </code>
-
-5) That's it! Have fun :-)
+4) That's it! Have fun :-)
 
 # Getting started and testing the code
 One you have installed ionFR in your computer, you will be able to run it from the terminal.
@@ -69,9 +63,9 @@ Example: codg2930.11i; igsg1130.19i
 
 The python script ftpdownload.py allows you to download the correct IONEX file from the website.
 
-<code> ftpdownload.py -d DATE (format YYYY-MM-DD) -t IONEX_file_type (string e.g. igsg, codg, etc.) </code>
+<code>ftpdownload.py DATE (format YYYY-MM-DD) -t IONEX_file_type (string e.g. igsg, codg, etc.)</code>
 
-Example: <code> ftpdownload.py -d 2011-10-20 -t codg </code>
+Example: <code>ftpdownload.py 2011-10-20 -t codg</code>
 
 The IONEX files are downloaded as compressed .Z files. These can be unpacked using e.g. gunzip or other suitable command.
 Note that ionFR is compatible with IONEX files with 2-hr time resolution.
