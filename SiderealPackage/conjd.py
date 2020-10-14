@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #================================================================
 # conjd:  Convert Julian date to date and time
 #   For documentation, see:

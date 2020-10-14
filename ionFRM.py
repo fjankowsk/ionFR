@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 #-----------------------------------------------------------
 # The following is a wrapper that calls several functions
 # written in python (and other languages) in order to estimate 

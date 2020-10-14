@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 #------------------------------------------------------
 # Extract RMS TEC values from an IONEX file
 # given a specific geographic coordinate.

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 #-------------------------------------------------------------------
 # This function provides de geographic and topographic coordinates
 # the Ionospheric piercing point (IPP)

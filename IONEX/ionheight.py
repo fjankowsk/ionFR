@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 #------------------------------------------
 # This script reads a IONEX file and retrieves
 # the height of the Ionosphere

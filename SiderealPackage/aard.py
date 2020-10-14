@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #================================================================
 # aard: Convert azimuth/altitude to right ascension/declination
 #   For documentation, see:

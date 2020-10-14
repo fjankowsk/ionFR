@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #================================================================
 # jd:  Convert date and time to Julian date
 #   For documentation, see:

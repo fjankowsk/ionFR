@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # Slight modified version of rdaa.py
 #================================================================
 # rdaa: Convert right ascension/declination to azimuth/altitude
